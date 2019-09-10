@@ -1,0 +1,36 @@
+version: '2'
+services:
+  serv_mult:
+    build: ./serv_mult
+    image: serv_mult
+    container_name: serv_mult
+    hostname: serv_mult
+    restart: always
+    networks:
+      - demo_network
+    volumes:
+      - ../serv_mult:/code
+    expose:
+      - 5003
+    ports:
+      - 5003:5003
+    command: ['python', 'multiplicacion.py']
+  front:
+    build: ./front
+    image: front
+    container_name: front
+    hostname: front
+    restart: always
+    networks:
+      - demo_network
+    depends_on:
+      - serv_mult
+    volumes:
+      - ../front:/code
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    command: ['python', 'main.py']
+networks:
+  demo_network:
