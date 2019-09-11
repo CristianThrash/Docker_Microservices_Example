@@ -15,6 +15,51 @@ services:
     ports:
       - 5003:5003
     command: ['python', 'multiplicacion.py']
+  serv_div:
+    build: ./serv_div
+    image: serv_div
+    container_name: serv_div
+    hostname: serv_div
+    restart: always
+    networks:
+      - demo_network
+    volumes:
+      - ../serv_div:/code
+    expose:
+      - 5004
+    ports:
+      - 5004:5004
+    command: ['python', 'division.py']
+  serv_suma:
+    build: ./serv_suma
+    image: serv_suma
+    container_name: serv_suma
+    hostname: serv_suma
+    restart: always
+    networks:
+      - demo_network
+    volumes:
+      - ../serv_suma:/code
+    expose:
+      - 5001
+    ports:
+      - 5001:5001
+    command: ['python', 'suma.py']
+  serv_resta:
+    build: ./serv_resta
+    image: serv_resta
+    container_name: serv_resta
+    hostname: serv_resta
+    restart: always
+    networks:
+      - demo_network
+    volumes:
+      - ../serv_resta:/code
+    expose:
+      - 5002
+    ports:
+      - 5002:5002
+    command: ['python', 'resta.py']
   front:
     build: ./front
     image: front
@@ -25,6 +70,9 @@ services:
       - demo_network
     depends_on:
       - serv_mult
+      - serv_div
+      - serv_suma
+      - serv_resta
     volumes:
       - ../front:/code
     expose:
