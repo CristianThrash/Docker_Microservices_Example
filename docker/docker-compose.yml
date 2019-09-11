@@ -60,6 +60,26 @@ services:
     ports:
       - 5002:5002
     command: ['python', 'resta.py']
+  gateway:
+    build: ./gateway
+    image: gateway
+    container_name: gateway
+    hostname: gateway
+    restart: always
+    networks:
+      - demo_network
+    depends_on:
+      - serv_mult
+      - serv_div
+      - serv_suma
+      - serv_resta
+    volumes:
+      - ../gateway:/code
+    expose:
+      - 5005
+    ports:
+      - 5005:5005
+    command: ['python', 'gateway.py']
   front:
     build: ./front
     image: front
@@ -69,10 +89,7 @@ services:
     networks:
       - demo_network
     depends_on:
-      - serv_mult
-      - serv_div
-      - serv_suma
-      - serv_resta
+      - gateway
     volumes:
       - ../front:/code
     expose:
