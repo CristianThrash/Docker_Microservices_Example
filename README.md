@@ -13,9 +13,9 @@ Se lanzan 6 servicios:
 
 # Autores
 
-Jairo Andrés Romero
+Jairo Andrés Romero - 20151020027
 
-Cristian Manuel Bernal
+Cristian Manuel Bernal - 20151020523
 
 # Requisitos de instalacion
 
@@ -26,7 +26,7 @@ git y docker con docker-compose instalados.
 Situarse en la ubicación de preferencia y ejecutar en una terminal los comandos
 
 	git clone https://github.com/CristianThrash/Docker-Microservices-Example.git
-	cd Docker-Microservices-Example
+	cd Docker-Microservices-Example/docker
 	docker-compose up
 
 Nota: Puede agregar la opción -d en el último comando para no bloquear la consola.
