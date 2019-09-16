@@ -1,16 +1,16 @@
 <html>
 <head>
-	
+	  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/estilo.css')}}">
 </head>
 <body>
 	<h1>{{num1}}<h1>
 	<form action="{{url_for('operacion')}}" method="POST">
-		<input type="text" name="num1" placeholder="">
-		<input type="text" name="num2">
-		<input type="submit" value="+" name="operacion">
-		<input type="submit" value="-" name="operacion">
-		<input type="submit" value="*" name="operacion">
-		<input type="submit" value="%" name="operacion">
+		<input type="text" name="num1" placeholder="" id="text">
+		<input type="text" name="num2" id="text">
+		<input type="submit" value="+" name="operacion" id="op">
+		<input type="submit" value="-" name="operacion" id="op">
+		<input type="submit" value="*" name="operacion" id="op">
+		<input type="submit" value="%" name="operacion" id="op">
 	</form>
 </body>
 </html>
